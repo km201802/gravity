@@ -30,10 +30,12 @@
 		}
 	</style>
 
-	<p>gravity</p>
+	<p>Gravity</p>
 	<input type="text" value="0.2" id="gravity">
-	<p>friction</p>
-	<input type="text" value="0.85" id="friction">
+	<p>Friction</p>
+	<input type="text" value="0.90" id="friction">
+	<p>Cantidad</p>
+	<input type="text" value="150" id="cantidad"/>
 	<button id="button" onclick="conf()">Aceptar</button>
 	<canvas id="canvas" width="1280" height="600"></canvas>
 
@@ -46,11 +48,13 @@
 	cv.height = innerHeight;
 
 	var gravity = 0.2;
-	var friction = 0.85;
+	var friction = 0.90;
+	var cantidad = 150
 
 	function conf(){
 		gravity = parseFloat(document.getElementById('gravity').value);
 		friction =  parseFloat(document.getElementById('friction').value);
+		cantidad = parseInt(document.getElementById('cantidad').value);
 		array = [];
 		draw();
 	}
@@ -117,11 +121,11 @@
 
 	var array = [];
 	function draw(){
-		for(let i = 0; i <150; i++){
+		for(let i = 0; i <cantidad; i++){
 			var radius = randomIntFromRange(8, 20);
 			var x = randomIntFromRange(radius, canvas.width - radius);
 			var y = randomIntFromRange(0, canvas.height*0.85);
-			var dx = randomIntFromRange(-15, 15)
+			var dx = randomIntFromRange(-10, 10)
 			var dy = randomIntFromRange(-2, 2)
 			array.push(new Bola(x, y, dx, dy, radius));
 		}
